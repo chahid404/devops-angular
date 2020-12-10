@@ -1,0 +1,41 @@
+<div class="container">
+    <div class=" panel panel-primary">
+        <div class="panel-heading">Liste des Produits</div>
+        <div class="panel-body">
+            <button class="btn btn-primary" (click)="onGetProducts()">produits</button>
+            <div class="panel-body">
+                <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+                    <div class="form-group">
+                        <label>Keyword</label>
+                        <input type="text" class="form-control" name="keyword" ngModel="keyword">
+                        <button type="submit" class="btn btn-danger">Chercher</button>
+                    </div>
+                </form>
+                <table *ngIf="listProduits" class="table table-striped">
+                    <tr>
+                        <th>ID</th>
+                        <th>Des</th>
+                        <th>PRIX</th>
+                        <th>QUANTITE</th>
+                    </tr>
+                    <tr *ngFor="let p of listProduits._embedded.produits">
+                        <td>{{p.id}}</td>
+                        <td>{{p.designation}}</td>
+                        <td>{{p.price|number:'0.2'}}</td>
+                        <td>{{p.quantite}}</td>
+                        <td><a class="btn btn-danger" (click)="onDeleteProduct(p)">Delete</a></td>
+                        <td><a class="btn btn-success" (click)="onEditProduct(p)">Edit</a></td>
+                    </tr>
+                </table>
+                <nav aria-label="Page navigation example">
+                    <ul *ngIf="pages" class="pagination">
+                        <li class="page-item" [ngClass]="i==currentPage?'active':''"
+                            *ngFor="let p of pages;let i=index">
+                            <a class="page-link" (click)="onPageProduct(i)">{{i}}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

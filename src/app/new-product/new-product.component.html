@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-title">Nouveau Produit</div>
+    <div class="card-body">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <form #f="ngForm" (ngSubmit)="onSaveProduit(f.value)">
+                <div class="form-group">
+                    <label class="control-label">designation</label>
+                    <input type="text" class="form-control" ngModel name="designation">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Quantite</label>
+                    <input type="number" class="form-control" ngModel name="quantite">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Prix</label>
+                    <input type="text" class="form-control" ngModel name="price">
+
+                </div>
+                <button class="btn btn-success" type="submit">Save</button>
+            </form>
+        </div>
+
+    </div>
+</div>
